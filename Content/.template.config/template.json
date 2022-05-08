@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Alexey Sedoykin",
+  "classifications": [ "Yandex", "Cloud" ],
+  "name": "Yandex Cloud Serverless Function Project",
+  "description": "The preconfigured Yandex Cloud ServerLess C# Function project",
+  "defaultName": "yaServerLessFunction",
+  "identity": "AlexeySedoykin.yaCloud.CSharp",
+  "shortName": "yaServerLessFunction",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true,
+  "sourceName": "yaServerLessFunctionProject",
+  "symbols": {
+    "AuthorName": {
+      "type": "parameter",
+      "isRequired": false,
+      "defaultValue": "Bla Bla Bla Bla",
+      "replaces": "dummyAuthor",
+      "datatype": "text",
+      "description": "Author name"
+    },
+    "Description": {
+      "type": "parameter",
+      "datatype": "text",
+      "isRequired": false,
+      "defaultValue": "Bla Bla Bla Bla",
+      "replaces": "dummyDescription",
+      "description": "Description"
+    },
+    "YaFunctionName": {
+      "type": "parameter",
+      "datatype": "text",
+      "isRequired": true,
+      "defaultValue": "bla-bla-bla-bla",
+      "description": "Yandex cloud function name, May contain lowercase Latin letters, numbers, and dashes. Must start with a letter and end in something other than a dash. Acceptable length is from 3 to 63 characters."
+    },
+    "YaFunctionMemory": {
+      "type": "parameter",
+      "defaultValue": "128",
+      "dataType": "int",
+      "isRequired": false,
+      "replaces": "dummyMemory",
+      "description": "Required memory for function execution"
+    },
+    "YaFunctionTimeout": {
+      "type": "parameter",
+      "dataType": "int",
+      "defaultValue": "3",
+      "isRequired": false,
+      "replaces": "dummyTimeOut",
+      "description": "Execution timeout for function execution"
+    },
+    "YaCloudServAccountID": {
+      "type": "parameter",
+      "datatype": "text",
+      "isRequired": false,
+      "defaultValue": "(insert yandex cloud service account ID)",
+      "replaces": "dummyServiceAccountID",
+      "description": "Yandex cloud service account ID"
+    },
+    "copyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "dummyCreated",
+      "parameters": {
+        "format": "dd/MM/yyyy HH:mm"
+      }
+    },
+    "YaFunctionNameLower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "YaFunctionName",
+        "toLower": true
+      },
+      "replaces": "dummyFunctionName"
+    }
+  },
+  "Forms": {
+    "AfterLastDot": {
+      "identifier": "replace",
+      "pattern": "^.*\\.(?=[^\\.]+$)",
+      "replacement": ""
+    },
+    "ABecomesZ": {
+      "identifier": "replace",
+      "pattern": "A",
+      "replacement": "Z"
+    },
+    "SBecomesDollar": {
+      "identifier": "replace",
+      "pattern": "S",
+      "replacement": "$"
+    },
+    "ChainAS": {
+      "identifier": "chain",
+      "steps": [ "ABecomesZ", "SBecomesDollar" ]
+    },
+    "first63": {
+      "identifier": "replace",
+      "pattern": "^.{1,63}",
+      "replacement": ""
+    }
+  }
+}
