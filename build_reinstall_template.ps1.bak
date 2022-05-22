@@ -12,4 +12,4 @@ function Reset-Templates{
 nuget pack .\nuget.conf.template.nuspec -OutputDirectory .\nupkg
 Reset-Templates
 dotnet new --uninstall yacloud.serverless.template.nuspec
-dotnet new --install .\nupkg\yacloud.serverless.template.nuspec.1.0.3.nupkg
+dotnet new --install .\nupkg\yacloud.serverless.template.nuspec.1.0.1.nupkg

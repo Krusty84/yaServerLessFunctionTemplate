@@ -69,39 +69,27 @@
         "format": "dd/MM/yyyy HH:mm"
       }
     },
-    "YaFunctionNameLower": {
-      "type": "generated",
-      "generator": "casing",
-      "parameters": {
-        "source": "YaFunctionName",
-        "toLower": true
-      },
+    "YaFunctionNameCharme": {
+      "type": "derived",
+      "valueSource": "YaFunctionName",
+      "valueTransform": "YaFunctionNameCharming",
       "replaces": "dummyFunctionName"
     }
   },
   "Forms": {
-    "AfterLastDot": {
-      "identifier": "replace",
-      "pattern": "^.*\\.(?=[^\\.]+$)",
-      "replacement": ""
-    },
-    "ABecomesZ": {
-      "identifier": "replace",
-      "pattern": "A",
-      "replacement": "Z"
-    },
-    "SBecomesDollar": {
-      "identifier": "replace",
-      "pattern": "S",
-      "replacement": "$"
-    },
-    "ChainAS": {
+    "YaFunctionNameCharming": {
       "identifier": "chain",
-      "steps": [ "ABecomesZ", "SBecomesDollar" ]
+      "steps": [
+        "lower",
+        "clean"
+      ]
     },
-    "first63": {
+    "lower": {
+      "identifier": "lowerCase"
+    },
+    "clean": {
       "identifier": "replace",
-      "pattern": "^.{1,63}",
+      "pattern": "(?<=.{63}).{0,}",
       "replacement": ""
     }
   }
